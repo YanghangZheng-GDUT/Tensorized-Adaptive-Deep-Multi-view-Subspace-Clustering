@@ -1,0 +1,27 @@
+import logging
+import os
+
+
+def log(pro_path, log_dirname, log_filename='', exp_id='', is_cover=None):
+    log_path = pro_path + log_dirname
+    if not os.path.exists(log_path):
+        os.makedirs(log_path)
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+
+    sh = logging.StreamHandler()
+    sh.setFormatter(formatter)
+    logger.addHandler(sh)
+
+    log_save = log_path + '/' + log_filename + '_' + str(exp_id) + '.log'
+    if is_cover:
+        if os.path.exists(log_save):
+            os.remove(log_save)
+
+    fh = logging.FileHandler(log_save, encoding='utf8')
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+    return logger
+
