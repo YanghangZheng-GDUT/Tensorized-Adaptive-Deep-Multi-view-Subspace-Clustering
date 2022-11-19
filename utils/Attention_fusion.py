@@ -42,3 +42,4 @@ class Attention_fusion(object):
         KL_loss = tf.keras.losses.KLDivergence(reduction=tf.keras.losses.Reduction.SUM)
         KL_div = KL_loss(F_Aug, Coef_F)
         return KL_div, Coef_F
+ 
