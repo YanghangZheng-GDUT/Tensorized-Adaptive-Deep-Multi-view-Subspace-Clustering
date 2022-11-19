@@ -12,16 +12,16 @@ class Attention_fusion(object):
     def attention_fusion(self, G, weight):
         n_x = self.sample_num
         x1 = tf.concat(G, 1)
-        p_nml = tf.nn.softmax(tf.nn.leaky_relu(tf.matmul(x1, weight)), axis=1)  # 两个视角C加权生成两列 w:2nx2
-        p = tf.math.l2_normalize(p_nml, axis=1)  # 对行向量进行范数 p:nx3 理解为分数，不同类型的在不同分数域
+        p_nml = tf.nn.softmax(tf.nn.leaky_relu(tf.matmul(x1, weight)), axis=1) 
+        p = tf.math.l2_normalize(p_nml, axis=1) 
 
         for i in range(self.v):
             pi = tf.reshape(p[:, i], [n_x, 1])
             pi_broadcast = tf.tile(pi, [1, n_x])
             if i == 0:
-                Coef_Fs = tf.multiply(pi_broadcast, G[i])  # hadamard product
+                Coef_Fs = tf.multiply(pi_broadcast, G[i])
             else:
-                Coef_Fs += tf.multiply(pi_broadcast, G[i])  # hadamard product
+                Coef_Fs += tf.multiply(pi_broadcast, G[i]) 
 
         return Coef_Fs
 
@@ -31,7 +31,7 @@ class Attention_fusion(object):
         sim_mat1 = 0.5 * (Coef_F + tf.transpose(Coef_F))
         sim_mat1 = sim_mat1 - tf.compat.v1.diag(tf.compat.v1.diag_part(sim_mat1))
         if tf.compat.v1.count_nonzero(tf.reduce_sum(sim_mat1, 1)) == self.sample_num:
-            sim_mat2 = tf.divide(sim_mat1, tf.reduce_sum(sim_mat1, 1))  # 每一行相加为1，对称矩阵，标准相似矩阵
+            sim_mat2 = tf.divide(sim_mat1, tf.reduce_sum(sim_mat1, 1))
         else:
             sim_mat2 = sim_mat1
         sim_mat3 = (sim_mat2 - tf.compat.v1.diag(tf.compat.v1.diag_part(sim_mat2))) + tf.eye(self.sample_num)
