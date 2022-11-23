@@ -9,5 +9,10 @@ Tensorized Adaptive Deep Multi-view Subspace Clustering
 - sklearn
 - munkres
 
-## Downloads
-Download the pre-trained model through 链接：https://pan.baidu.com/s/1DHPWm3NoKgijNvI-cERD8Q 提取码：8r9l
+## Pre-trained Autoencoders 
+Download the pre-trained AE form [Baidu cloud](https://pan.baidu.com/s/1DHPWm3NoKgijNvI-cERD8Q) with password "8r9l".
+
+## Testing
+```
+python test_Caltech7.py
+```
