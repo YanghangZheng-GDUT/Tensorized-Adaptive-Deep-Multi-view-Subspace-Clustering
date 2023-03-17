@@ -1,0 +1,14 @@
+2023-03-17 19:58:43,992 INFO the 1 times testing
+2023-03-17 20:02:06,852 INFO the 2 times testing
+2023-03-17 20:05:33,297 INFO the 3 times testing
+2023-03-17 20:08:46,709 INFO the 4 times testing
+2023-03-17 20:12:02,413 INFO the 5 times testing
+2023-03-17 20:15:21,728 INFO the 6 times testing
+2023-03-17 20:18:48,577 INFO the 7 times testing
+2023-03-17 20:22:49,630 INFO the 8 times testing
+2023-03-17 20:27:05,409 INFO the 9 times testing
+2023-03-17 20:32:11,383 INFO the 10 times testing
+2023-03-17 20:35:59,057 INFO 
+dataset:Caltech101-7
+metrics: ACC	NMI 	PUR 	AR
+result:[0.8661 0.7519 0.9139 0.8413]
