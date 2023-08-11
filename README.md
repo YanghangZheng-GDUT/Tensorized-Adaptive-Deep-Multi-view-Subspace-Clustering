@@ -11,3 +11,9 @@ Tensorized Adaptive Deep Multi-view Subspace Clustering
 
 ## Downloads
 The pre-trained AE can be attained in https://pan.baidu.com/s/14gs7X1GND2IJ7cKMoJya_g with the verification code vp34.
+
+## To test the model on provided datasets, e.g., The Extended YaleB, run:
+
+```
+python test_YaleB.py
+```
